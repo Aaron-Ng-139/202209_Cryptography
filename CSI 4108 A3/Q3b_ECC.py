@@ -1,0 +1,37 @@
+# ECC.py
+import sympy
+from math import sqrt
+
+# Calculations were unable to be implemented in python and therefore were
+# done via website http://christelbach.com/ECCalculator.aspx
+
+# Primes were generated with sympy.randprime(2, 2**256)
+p = 9154658054296588153639075170012558729144462189053869687230855905992944978497
+a = 2
+b = 3
+# E_p(2,3) : y^2 = x^3 + 2x + 3 mod p
+
+G = [3, 6]
+# LS: 3^3 + 2*3 + 3 = 36
+# RS: 6^2 = 36
+
+n_A = 5
+# P_A = n_A * G
+P_A = [175007562299255230161373334881483988897444666511651677309116779358607118809,5628434892556884632318802531104479131904400195581239745520817568376275077057]
+# P_A = P_addition(G, n_A, p, a)
+
+n_B = 21
+# P_B = n_B * G
+P_B = [9008923804980395384293337404709142051206226913959450231743034809619445305620,1208674785032107186431145732330857714056339546483611878371219815915075744874]
+
+# k_Alice = n_A * P_B
+k_Alice = [965489876811273672986430929239010145569249083196087889527929389337979459321,1136326843066976090232018089545821913331147617188652039008493007648463582046]
+# k_Bob = n_B * P_A
+k_Bob = [965489876811273672986430929239010145569249083196087889527929389337979459321, 1136326843066976090232018089545821913331147617188652039008493007648463582046]
+if k_Alice == k_Bob:
+    print("Alice and Bob have both computed the shared secret")
+
+# Unable to show timing results due to lack implemntation using ECDH 
+# However, using "ordinary" D-H with equivalent security to 256-bit ECDH would 
+# require a modulus size of 3072 bits. Such calculations would without a doubt take
+# exponentially longer than doing 256-bit calculations.

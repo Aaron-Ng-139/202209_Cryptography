@@ -1,0 +1,7 @@
+Q4)
+It is possible to implement a hash function in block ciphers like DES because DES is a Feistel Cipher.
+Feistel ciphers use round functions during both encrypting and decrypting.
+However for decrypting in Feistel ciphers, we do not need to invert the function,
+we simply use the same round keys as encryption but in reverse order.
+Since we never need to invert the function, a non-reversible (or one-way) function can be used.
+This is how block ciphers like DES can make use of hash functions.
